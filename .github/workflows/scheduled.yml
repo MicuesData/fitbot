@@ -1,22 +1,22 @@
-name: Scheduled FitBot run
+name: Fitbot Schedule
 
 on:
   schedule:
-  - cron: "00 17 * * *"
-  workflow_dispatch:
+    - cron: "0 8 * * *" # Se lanza a las 09:00 AM hora España (Invierno)
+  workflow_dispatch:     # Permite el botón "Run workflow" manual
 
 jobs:
-  run:
+  run-fitbot:
     runs-on: ubuntu-latest
     steps:
       - name: Run fitbot
         run: >
           docker run 
-          -e email=${{ secrets.EMAIL }} 
-          -e password=${{ secrets.PASSWORD }} 
-          -e booking-goals='${{vars.BOOKING_GOALS}}' 
-          -e box-name=${{ vars.BOX_NAME }} 
-          -e box-id=${{ vars.BOX_ID }} 
-          -e days-in-advance=${{ vars.DAYS_IN_ADVANCE }} 
-          -e proxy=${{ secrets.PROXY }} 
+          -e email="${{ secrets.EMAIL }}" 
+          -e password="${{ secrets.PASSWORD }}" 
+          -e booking-goals='{"2":{"time":"1800","name":"Crosstraining"}}' 
+          -e box-name="boxkairos" 
+          -e box-id="10381" 
+          -e days-in-advance=3 
+          -e proxy="${{ secrets.PROXY }}" 
           pablobuenaposada/fitbot
