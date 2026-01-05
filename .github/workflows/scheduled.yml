@@ -10,8 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run fitbot
-        run: >
-          docker run 
-          --entrypoint /bin/sh 
-          pablobuenaposada/fitbot 
-          -c "uv run python src/main.py --email='pedro.jmg@gmail.com' --password='Frenos2010' --booking-goals='{\"3\":{\"time\":\"1800\",\"name\":\"Crosstraining\"}}' --box-name='boxkairos' --box-id='10381' --days-in-advance=3"
+        run: |
+          # Primer usuario: Pedro
+          docker run --entrypoint /bin/sh pablobuenaposada/fitbot -c "uv run python src/main.py \
+            --email='pedro.jmg@gmail.com' \
+            --password='Crossfit1234' \
+            --booking-goals='{\"2\":{\"time\":\"1800\",\"name\":\"Crosstraining\"},\"4\":{\"time\":\"1800\",\"name\":\"Crosstraining\"},\"6\":{\"time\":\"0930\",\"name\":\"Crosstraining\"}}' \
+            --box-name='boxkairos' --box-id='10381' --days-in-advance=3"
+          
+          # Segundo usuario: Maria (Descomenta las líneas de abajo cuando quieras usarlo)
+          # docker run --entrypoint /bin/sh pablobuenaposada/fitbot -c "uv run python src/main.py \
+          #   --email='maria@gmail.com' \
+          #   --password='otra-password' \
+          #   --booking-goals='{\"2\":{\"time\":\"1800\",\"name\":\"Crosstraining\"},\"4\":{\"time\":\"1800\",\"name\":\"Crosstraining\"},\"6\":{\"time\":\"0930\",\"name\":\"Crosstraining\"}}' \
+          #   --box-name='boxkairos' --box-id='10381' --days-in-advance=3"
