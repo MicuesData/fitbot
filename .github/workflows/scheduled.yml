@@ -14,4 +14,4 @@ jobs:
           docker run 
           --entrypoint /bin/sh 
           pablobuenaposada/fitbot 
-          -c "uv run python src/main.py --email='${{pedro.jmg@gmail.com}}' --password='${{Frenos2010}}' --booking-goals='{\"2\":{\"time\":\"1800\",\"name\":\"Crosstraining\"}}' --box-name='boxkairos' --box-id='10381' --days-in-advance=2"
+          -c "uv run python src/main.py --email='pedro.jmg@gmail.com' --password='Frenos2010' --booking-goals='{\"2\":{\"time\":\"1800\",\"name\":\"Crosstraining\"}}' --box-name='boxkairos' --box-id='10381' --days-in-advance=2"
