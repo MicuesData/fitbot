@@ -13,6 +13,5 @@ jobs:
         run: >
           docker run 
           --entrypoint /bin/sh
-          -e PYTHONHTTPSVERIFY=0
           pablobuenaposada/fitbot
-          -c "export CURL_CA_BUNDLE='';uv run python src/main.py --email='${{ secrets.EMAIL }}' --password='${{ secrets.PASSWORD }}' --booking-goals='{\"2\":{\"time\":\"1800\",\"name\":\"Crosstraining\"}}' --box-name='boxkairos' --box-id='10381' --days-in-advance=2 --proxy='${{ secrets.PROXY }}'"
+          -c "uv run python src/main.py --email='${{ secrets.EMAIL }}' --password='${{ secrets.PASSWORD }}' --booking-goals='{\"2\":{\"time\":\"1800\",\"name\":\"Crosstraining\"}}' --box-name='boxkairos' --box-id='10381' --days-in-advance=2 --proxy='${{ secrets.PROXY }}'"
