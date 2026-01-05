@@ -2,22 +2,6 @@ name: Fitbot Schedule
 
 on:
   schedule:
-    - cron: "0 17 * * *"  # Ejecuta a las 18:00 hora española
-  workflow_dispatch:
-
-jobs:
-  run-fitbot:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run fitbot
-        run: >
-          docker run 
-          --entrypoint /bin/sh 
-          pablobuenaposada/fitbot 
-          -c "uv run python src/main.py --email='${{ secrets.EMAIL }}' --password='${{ secrets.PASSWORD }}' --booking-goals='{\"2\":{\"time\":\"1800\",\"name\":\"Crosstraining\"}}' --box-name='boxkairos' --box-id='10381' --days-in-advance=2"name: Fitbot Schedule
-
-on:
-  schedule:
     - cron: "0 17 * * *"
   workflow_dispatch:
 
