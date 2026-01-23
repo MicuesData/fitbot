@@ -2,6 +2,7 @@ name: Fitbot Schedule
 
 on:
   schedule:
+    - cron: "30 10 * * *"  
     - cron: "0 17 * * *"
   workflow_dispatch:
 
