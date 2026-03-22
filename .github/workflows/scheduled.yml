@@ -2,26 +2,32 @@ name: Fitbot Schedule
 
 on:
   schedule:
-    - cron: "16 9 * * *"  
+    - cron: "16 5 * * *" 
+    - cron: "16 9 * * *"
     - cron: "50 16 * * *"
   workflow_dispatch:
 
 jobs:
-  run-fitbot:
+  # RESERVA PARA PEDRO
+  reserva-pedro:
     runs-on: ubuntu-latest
     steps:
-      - name: Run fitbot
+      - name: Ejecutar reserva Pedro
         run: |
-          # Primer usuario: Pedro
           docker run --entrypoint /bin/sh pablobuenaposada/fitbot -c "uv run python src/main.py \
             --email='pedro.jmg@gmail.com' \
             --password='Crossfit1234' \
             --booking-goals='{\"1\":{\"time\":\"1800\",\"name\":\"Crosstraining\"},\"3\":{\"time\":\"1800\",\"name\":\"Crosstraining\"},\"5\":{\"time\":\"1030\",\"name\":\"Crosstraining\"},\"6\":{\"time\":\"1030\",\"name\":\"Crosstraining\"}}' \
             --box-name='boxkairos' --box-id='10381' --days-in-advance=3"
-          
-          # Segundo usuario: Maria (Descomenta las líneas de abajo cuando quieras usarlo)
-          # docker run --entrypoint /bin/sh pablobuenaposada/fitbot -c "uv run python src/main.py \
-          #   --email='maria@gmail.com' \
-          #   --password='otra-password' \
-          #   --booking-goals='{\"2\":{\"time\":\"1800\",\"name\":\"Crosstraining\"},\"4\":{\"time\":\"1800\",\"name\":\"Crosstraining\"},\"6\":{\"time\":\"0930\",\"name\":\"Crosstraining\"}}' \
-          #   --box-name='boxkairos' --box-id='10381' --days-in-advance=3"
+
+  # RESERVA PARA JUAKI
+  reserva-maria:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ejecutar reserva Juanki
+        run: |
+          docker run --entrypoint /bin/sh pablobuenaposada/fitbot -c "uv run python src/main.py \
+            --email='juancarlosvelezcalderon@gmail.com' \
+            --password='Juanki1234' \
+            --booking-goals='{\"0\":{\"time\":\"0630\",\"name\":\"Crosstraining\"},\"1\":{\"time\":\"0630\",\"name\":\"Crosstraining\"},\"2\":{\"time\":\"0630\",\"name\":\"Crosstraining\"},\"3\":{\"time\":\"0630\",\"name\":\"Crosstraining\"},\"4\":{\"time\":\"0630\",\"name\":\"Crosstraining\"}}' \
+            --box-name='boxkairos' --box-id='10381' --days-in-advance=3"
